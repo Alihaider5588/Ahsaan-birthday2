@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Ahsaan Bhai! 🎉 | Ali Haider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="birthday.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Floating animated background elements -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Music toggle button -->
+  <div class="music-toggle" id="musicToggle" title="Play background party beat">
+    <i class="fa-solid fa-volume-xmark" id="musicIcon"></i>
+    <span class="music-text">Music</span>
+  </div>
+
+  <div class="container">
+    <!-- Progress Indicator / Timeline Pills -->
+    <div class="timeline-indicator" id="timelineBar">
+      <div class="indicator-step active" data-step="0"><i class="fa-solid fa-mosque"></i><span>2010-12</span></div>
+      <div class="indicator-step" data-step="1"><i class="fa-solid fa-car-burst"></i><span>2020</span></div>
+      <div class="indicator-step" data-step="2"><i class="fa-solid fa-mask"></i><span>18 Oct</span></div>
+      <div class="indicator-step" data-step="3"><i class="fa-solid fa-tree"></i><span>19 Oct</span></div>
+      <div class="indicator-step" data-step="4"><i class="fa-solid fa-heart-crack"></i><span>Galti</span></div>
+      <div class="indicator-step" data-step="5"><i class="fa-solid fa-clock-rotate-left"></i><span>2021-26</span></div>
+      <div class="indicator-step" data-step="6"><i class="fa-solid fa-fire"></i><span>Aug 26</span></div>
+      <div class="indicator-step" data-step="7"><i class="fa-solid fa-envelope-open-text"></i><span>7 Sept</span></div>
+      <div class="indicator-step" data-step="8"><i class="fa-solid fa-cake-candles"></i><span>Birthday</span></div>
+    </div>
+
+    <!-- MAIN CARDS WRAPPER -->
+    <div class="cards-wrapper">
+
+      <!-- SLIDE 0: 2010 - 2012 Pehli Mulaqat -->
+      <section class="card-slide active" id="slide-0">
+        <div class="card-top-bar">
+          <div class="card-badge">✨ Flashback: The Beginning</div>
+          <span class="slide-counter">1 / 9</span>
+        </div>
+        <h2 class="slide-title">2010 ya 2012 — Masjid Ka Nazra Aur Choti Umr 🕌</h2>
+        <div class="timeline-tag"><i class="fa-regular fa-clock"></i> Bachpan Ke Wo Sunhere Din</div>
+
+        <div class="photo-placeholder full-frame">
+          <img id="preview-0" src="images/childhood.jpg" alt="Childhood Memory"
+            onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80'">
+        </div>
+
+        <div class="story-content">
+          <p>
+            Yaad hai Ahsaan bhai? <strong>2010 ya 2012</strong> ke aas paas ki baat hai, tab hum dono bohot masoom aur chhote thay!
+            Exact date to kisi ko yaad nahi, par wo din aaj bhi taaza hain jab hum <strong>Masjid mein Nazra</strong>
+            parhne jate thay — gale mein tasbeeh, sar pe topi, aur dimag mein shaitaniyan! 😇😂
+          </p>
+          <div class="quote-box">
+            "Wahan se shuru hui thi Ali Haider aur Ahsaan ki ye dosti... Pehle thori hichkichaahat, phir baat cheet, aur phir aisi pakki yaari jo saalon baad bhi koi nahi tor saka!" ❤️✨
+          </div>
+          <p class="highlight-text">
+            "Puri masjid mein qari sahab se bachte bachte dosti kab bhaiyon jaisi ban gayi, pata hi nahi chala! Tab kya pata tha k ye chhota sa Ahsaan itna bada 'bewafa' niklega 😂❤️"
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-stamp"></i> Final Touch</span>
+            <p><strong>Verdict 2010:</strong> Dosti masjid ke farsh se shuru hui thi, ek tasbeeh aur do shaitaan! Tab kisi ko nahi pata tha aage chal ke Ahsaan itna bada kaand karega! 😇😂</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Kya ye masoom bachpan yaad hai? Aage barhein? 😉</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(1)">Haan Yaar, Aage Chal! 🚀</button>
+            <button class="btn btn-no runaway-btn">Nahi Bhool Gaya 😂</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 1: 2020 Accident & Bakchodi Shuru -->
+      <section class="card-slide" id="slide-1">
+        <div class="card-top-bar">
+          <div class="card-badge">⚡ Turning Point: 2020</div>
+          <span class="slide-counter">2 / 9</span>
+        </div>
+        <h2 class="slide-title">2020 — Accident Aur Full Bakchodi Mode On! 💥</h2>
+        <div class="timeline-tag"><i class="fa-solid fa-car-burst"></i> Dosti Next Level Par</div>
+
+        <div class="photo-placeholder full-frame">
+          <img id="preview-1" src="images/friends_2020.jpg" alt="2020 Memories"
+            onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80'">
+        </div>
+
+        <div class="story-content">
+          <p>
+            Phir saal 2020 aya... Jab hamary ek dost ka <strong>accident</strong> hua. Us mushkil waqt mein hospital ki parchi se lekar medicine lene tak, hum dono kandhe se kandha mila kar sath kharay rahay! 🏥🤝
+          </p>
+          <div class="quote-box">
+            "Kehte hain dost wo hota hai jo mushkil mein pehle pohanche. Us din humne ek doosray ko dost nahi, apna saga bhai maana tha! Haan haan wohi bhai jo baad mein treat se bhi mur jata hai 😂" ❤️
+          </div>
+          <p class="highlight-text">
+            Aur wahan se shuru hui hamari <strong>Full Bakchodi Life!</strong> Jahan Ahsaan wahan Ali Haider, aur jahan Ali Haider wahan koi na koi toofaan! 😈🔥<br>
+            <em>"Hospital se nikle aur seedha mischief mode ON!"</em> 🚀
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-notes-medical"></i> Final Touch</span>
+            <p><strong>Hospital Record 2020:</strong> Jab tak dost ki taang theek nahi hui, hospital mein chai-parathay Ali Haider ne supply kiye! Saga bhai protocol active! ☕🥖</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Kyun yaad aya 2020 ka wo daur? Dekhein agla kaand? 😂</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(2)">Beshak, Dikha Kaand! 🔥</button>
+            <button class="btn btn-no runaway-btn">Rehn De Bhai 😜</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: 18-10-2020 Sahiwal Kaand -->
+      <section class="card-slide" id="slide-2">
+        <div class="card-top-bar">
+          <div class="card-badge">🚨 Kaand No. 1: Sahiwal Special</div>
+          <span class="slide-counter">3 / 9</span>
+        </div>
+        <h2 class="slide-title">18-10-2020 (Dupahar 2:00 Baje) — Sahiwal Mein Bakchodi! 🏙️</h2>
+        <div class="timeline-tag"><i class="fa-solid fa-calendar-day"></i> 18 October 2020 | ~2:00 PM</div>
+
+        <div class="photo-placeholder full-frame">
+          <img id="preview-2" src="images/sahiwal_scene.jpg" alt="Sahiwal Scene"
+            onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80'">
+        </div>
+
+        <div class="story-content">
+          <p>
+            <strong>18 October 2020, dupahar ke theek 2 bajay!</strong><br>
+            Sahiwal city mein Ahsaan miyan ne aisa zabardast kaand aur hungama khara kiya... Magar ustaad ki hoshiyari aur scheme check karo!
+          </p>
+          <div class="quote-box">
+            "Kaam Ahsaan ka tha... Panga Ahsaan ka tha... Magar phansaaya kisay? Name kis ka lagaya? <strong>Ali Haider ka!</strong> 😂<br>
+            Matlab sharafat meri aur badnaami bhi meri! Aaj tak log puchte hain k Ali bhai ye kia tha?!" 🤦‍♂️🤣
+          </div>
+          <p class="highlight-text">
+            "Magar sach to ye hai bhai, agar tere liye naam na lagwata to dost kaisa hota!" 😎❤️
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-shield-halved"></i> Final Touch</span>
+            <p><strong>Sahiwal Police Record:</strong> Kaand Ahsaan ka, badnaami Ali Haider ki! Dosti ho to aisi, warna banda akele hi bail karwa leta hai! 🚓🤣</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Sach bata Ahsaan, mera hi naam lena zaroori tha na? 🤣</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(3)">Agla Kaand Bhi Suno! 🏃‍♂️</button>
+            <button class="btn btn-no runaway-btn">Maine Kuch Nahi Kiya 🙈</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: 19-10-2020 Village Kaand -->
+      <section class="card-slide" id="slide-3">
+        <div class="card-top-bar">
+          <div class="card-badge">🌾 Kaand No. 2: Gao Ki Raat</div>
+          <span class="slide-counter">4 / 9</span>
+        </div>
+        <h2 class="slide-title">19-10-2020 (Raat 7:00 Baje) — Village / Gao Mein Scene! 🌙</h2>
+        <div class="timeline-tag"><i class="fa-solid fa-calendar-day"></i> 19 October 2020 | 7:00 PM</div>
+
+        <div class="photo-placeholder full-frame">
+          <img id="preview-3" src="images/village_scene.jpg" alt="Village Scene"
+            onerror="this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80'">
+        </div>
+
+        <div class="story-content">
+          <p>
+            Abhi Sahiwal ka dhuwan thanda nahi hua tha ke agle hi din <strong>19 October 2020, raat ke 7 bajay</strong>
+            hamare pyare gao (village) mein phir se ek nayi film chali!
+          </p>
+          <div class="quote-box">
+            "Aur guess what? Phir se mera hi naam aagay! 😂 Matlab official brand ambassador ban chuka tha Ali Haider tere har pange ka! Aaj bhi CV mein likhta hoon — <strong>'Ahsaan ke pangeon ka PR Manager'</strong>" 🕶️
+          </div>
+          <p class="highlight-text">
+            "Pura gao so raha tha magar hamari planning aur shararatein 24/7 on rehti theen! Murgiyan bhi jag gayi theen! 🐔" 🚜✨
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-tractor"></i> Final Touch</span>
+            <p><strong>Village Record:</strong> Raat theek 7 baje poora pind so raha tha, aur hum dono secret missions chala rahe thay! Awaz thori kam, hasi zyada! 🌾🔦</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Maan gaya na ustaad? Aage chalain? 🤝</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(4)">Haan Bhai Aage Chalo! ⚡</button>
+            <button class="btn btn-no runaway-btn">Pakray Gaye Yaar 🏃‍♂️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: October 2020 - Galti Insaan Se Hoti Hai -->
+      <section class="card-slide" id="slide-4">
+        <div class="card-top-bar">
+          <div class="card-badge">❤️ Sachhi Dosti: Mafiyan Aur Pyar</div>
+          <span class="slide-counter">5 / 9</span>
+        </div>
+        <h2 class="slide-title">October 2020 — Galti Insaan Se Hi Hoti Hai 🫂</h2>
+        <div class="timeline-tag"><i class="fa-solid fa-hands-holding-circle"></i> Pure Friendship Bond</div>
+
+        <!-- Slide 4: Galti Tab with 2 real photos (Dosti ka mashwara & raat ka scene) -->
+        <div class="photo-grid-two">
+          <div class="photo-placeholder full-frame">
+            <img src="images/galti_2.jpg" alt="Dosti Ka Samjhauta">
+          </div>
+          <div class="photo-placeholder full-frame">
+            <img src="images/sept7_scene.jpg" alt="Gao Ki Raat Ka Scene">
+          </div>
+        </div>
+
+        <div class="story-content">
+          <p>
+            October 2020 ke dauran hamare Ahsaan miyan se ek nanhi munhi <strong>galti</strong> ho gayi thi... Par scene clear hai: <strong>Na koi larai hui thi, na koi dushmani!</strong> 🙅‍♂️😂
+          </p>
+          <div class="quote-box">
+            "Sirf bachpan ki nadani aur thori si masoom shaitani thi! Aur ustaad, ghaltiyan to doston aur bhaiyon se hi hoti hain, farishton se to nahi! Agar dosti mein aisi choti moti baatein na hon to phir dosti boring nahi ho jati? 😉🔥"
+          </div>
+          <p class="highlight-golden">
+            "Sachi baat ye hai k jo dosti dil se ho, usme koi gila shikwa tik hi nahi sakta! Saal 2021 aane se pehle hi sab mamlaat hasi mazaak mein hawa ho gaye aur yaari pehle se bhi dugni pakki ho gayi!" 🤝❤️
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-heart-circle-check"></i> Final Touch</span>
+            <p><strong>Supreme Court Ka Faisla:</strong> Bachpan ki nadani thi, koi dushmani nahi! Doston se hi to galtiyan hoti hain, aur asli dost dil mein baat nahi rakhtay! 🫂⚖️</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Sach bata, doston mein aisi galtiyan maaf hoti hain na? ❤️😂</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(5)">Bilkul Nahi, Dil Saaf! ❤️</button>
+            <button class="btn btn-no runaway-btn">Hota Hai Bhai 😂</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: 2021 to July 2026 - Dua Salaam Phase -->
+      <section class="card-slide" id="slide-5">
+        <div class="card-top-bar">
+          <div class="card-badge">⏳ 2021 Se July 2026 Ka Safar</div>
+          <span class="slide-counter">6 / 9</span>
+        </div>
+        <h2 class="slide-title">2021 Se July 2026 — Dua Salaam Aur Zindagi Ki Masroofiyat 🛣️</h2>
+        <div class="timeline-tag"><i class="fa-solid fa-hourglass-half"></i> Khamosh Magar Pakki Dosti</div>
+
+        <!-- Funny Missing Photo Notice Box -->
+        <div class="funny-missing-photo-box">
+          <div class="funny-icon">📸🕵️‍♂️</div>
+          <h4>Cameraman Masroofiyat Ki Waja Se Gayab Tha! 😂</h4>
+          <p>
+            "2021 se 2026 ke darmiyan hum itnay masroof thay k photo lena hi bhool gaye! <br>
+            Aamne saamne bas <em>'Aur bhai kaisa hai, theek thak?'</em> bol kar dono apne apne kamon pe nikal jatay thay!" 🏃‍♂️💨
+          </p>
+          <span class="funny-pill">⚠️ Saboot Missing Magar Dosti Full Active!</span>
+        </div>
+
+        <div class="story-content">
+          <p>
+            2021 ke baad zindagi ki daur dhoop shuru hui... Career, zimmadariyan aur masroofiyat! July 2026 tak hum aksar bas aamne saamne mil kar <strong>dua salaam</strong> tak rehte thay.
+          </p>
+          <div class="quote-box">
+            "Log kehte hain faasle dosti kam kar dete hain... Magar unhein kya pata, jinki neev (foundation) bachpan ki masjid se judi ho, wo faaslon ke mohtaaj nahi hote! Haan phone pe balance khatam zaroor ho jata tha 😂" 🕊️
+          </div>
+          <p class="highlight-text">
+            Dua hamesha dil se nikalti rahi Ahsaan bhai ke liye, chahe mulaqaat roz ho ya mahinon baad! <br>
+            <em>"Dooriyan zyada theen magar dil ke faasle zero thay — ye alag baat k OTP ka jawab nahi deta tha! 📵😤"</em>
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-signal"></i> Final Touch</span>
+            <p><strong>Network Signal Test:</strong> 5 saal selfie nahi li, magar dil ke taar hamesha 5G rahay! Ek call pe dono bhai bina filter ke hazir! 📶❤️</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Phir August 2026 ka dhamakedar comeback dekhna hai? 💣</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(6)">Haan, Comeback Dikhao! 🔥</button>
+            <button class="btn btn-no runaway-btn">Nahi Rehn Do 😴</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: August 2026 - Comeback of Bakchodi -->
+      <section class="card-slide" id="slide-6">
+        <div class="card-top-bar">
+          <div class="card-badge">🚀 The Epic Comeback</div>
+          <span class="slide-counter">7 / 9</span>
+        </div>
+        <h2 class="slide-title">August 2026 — Purany Din Aur Wohi Full Bakchodi Wapas! 🔥</h2>
+        <div class="timeline-tag"><i class="fa-solid fa-bolt"></i> August 2026 | Reunion</div>
+
+        <!-- Funny Missing Photo Notice Box -->
+        <div class="funny-missing-photo-box">
+          <div class="funny-icon">⚡🎉</div>
+          <h4>Pic Khainchna Bhool Gaye, Bakchodi Zyada Thi! 🤣</h4>
+          <p>
+            "August 2026 mein jab dobara regular calls aur baatein shuru hueen, toh has has ke bura haal tha! <br>
+            Itni hansi mein photo ka hosh kisko hota hai bhai?!" 🤷‍♂️🔥
+          </p>
+          <span class="funny-pill">🔥 100% Pure Non-Stop Bakchodi Reloaded</span>
+        </div>
+
+        <div class="story-content">
+          <p>
+            August 2026 mein achanak hamari dobara regular gupshup aur calls shuru hueen! Jaise koi game ka naya season release hua ho! 🎮
+          </p>
+          <div class="quote-box">
+            "Aur ek second mein aisa laga jaise beech ke 5-6 saal guzray hi nahi thay! Wohi purany tehhaqay, wohi purani baatein aur wohi full bakchodi 2.0 version mein wapas active! WiFi reconnect hone mein 5 saal lag gaye lekin signal full aaya! 📶" 💥😂
+          </div>
+          <p class="highlight-text">
+            "Kyun k legends kabhi change nahi hotay, bas reload ho kar aatay hain! Update mein thora time lagta hai! ⏳" 👑😎
+          </p>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-arrows-rotate"></i> Final Touch</span>
+            <p><strong>System Reloaded:</strong> 5 saal baad bhi software wahi purana! Dil wahi, dosti wahi, aur bakchodi wahi 2.0 version mein full speed! 🚀🔥</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Is dosti ki koi misaal hai? Agli aham tareekh dekhein? 👑</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(7)">Agli Tareekh Dikha! 📅</button>
+            <button class="btn btn-no runaway-btn">Koi Misaal Nahi 🙅‍♂️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: 7 September 2026 - Sham 6:25 -->
+      <section class="card-slide" id="slide-7">
+        <div class="card-top-bar">
+          <div class="card-badge">💔 Bewafai Special: The Big Khulasa 😂</div>
+          <span class="slide-counter">8 / 9</span>
+        </div>
+        <h2 class="slide-title">7 September 2026 (Sham 6:25) — Bewafa Nikla Ustaad! 💔😂</h2>
+        <div class="timeline-tag"><i class="fa-regular fa-clock"></i> 7 September 2026 | 6:25 PM The Incident</div>
+
+        <div class="photo-placeholder full-frame">
+          <img id="preview-7" src="images/sept7_office.jpg" alt="7 September Ka Scene"
+            onerror="this.src='images/galti_1.jpg'">
+        </div>
+
+        <div class="story-content">
+          <p>
+            <strong>7 September 2026 ko shaam theek 6:25 par</strong>, Ahsaan aur bhabhi ne mil kar mujhe ek bohot hi dukhi khabar sunaayi... Aisi dukhi khabar ke sun kar dil ke 32 tukray ho gaye! 💔🥺😂
+          </p>
+          <div class="quote-box" style="border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.08);">
+            "Dekho <strong>bhabhi ki to khair hai</strong>, bhabhi hamari behen jaisi hain, unko 100 khoon maaf hain! 🌸🙌<br>
+            <strong>Magar Ahsaan... Tumnay mere liye kya kiya?! 😤💔</strong><br>
+            Tu to seedha seedha <em>'Bewafa'</em> nikla ustaad! Itnay saalon ki dosti ka ye sila diya tune?! Acha bhala saga bhai maana tha aur tu ne beech raste mein bewafai kar di! 😂🤦‍♂️"
+          </div>
+          <p class="highlight-golden">
+            "Chal koi nahi ustaad... <strong>Magar hum nahi hain na!</strong> 😎❤️ Hum tere jaise thori hain k peechay hatt jayein!<br>
+            Agar kabhi <strong>tere sath aisa hota nazar aya</strong>, ya kisi ne tere sath aisi bewafai ki koshish ki... <strong>phir dekhna Ali Haider tere sath kaise khara hota hai!</strong> Danda le ke pehle number pe pohanchon ga! 👊🔥"
+          </p>
+          <div class="quote-box">
+            "Suno Ahsaan miyan: Dunya mein WiFi, mausam, mehengai sab bewafa ho saktay hain... Magar tera ye bhai Ali Haider? Ye to wo Nokia 3310 hai jo lifetime on rehta hai! 📱💪 Chahe tu kitna bhi bewafa ban ja, dosti hamari qayamat tak A1 hi rahay gi! 🫂😂"
+          </div>
+          <div class="final-touch-box">
+            <span class="final-touch-badge"><i class="fa-solid fa-heart-crack"></i> Final Touch</span>
+            <p><strong>Bewafai Ka Verdict:</strong> Bewafa to tu hai Ahsaan, magar teri bewafai bhi hasi hasi mein qubool hai! Bas ab birthday treat se bewafai na karna warna chittar parade tayyar hai! 🍕🏏😂</p>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <p class="question-title">Bewafai ka hisaab baad mein hoga, pehle birthday grand surprise dekh! 🎂😜</p>
+          <div class="btn-group">
+            <button class="btn btn-yes" onclick="nextSlide(8)">Surprise Kholo Bhai! 🎁</button>
+            <button class="btn btn-no runaway-btn">Abhi Nahi 🙈</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: 1 October 2026 - GRAND BIRTHDAY WISH & TREAT -->
+      <section class="card-slide" id="slide-8">
+        <div class="card-top-bar">
+          <div class="card-badge pulse-badge">🎂 HAPPY BIRTHDAY AHSAAN! 🎂</div>
+          <span class="slide-counter gold-counter">9 / 9 (Grand Finale)</span>
+        </div>
+        <h1 class="grand-birthday-title">HAPPY BIRTHDAY MERAY JAAN, AHSAAN! 👑🎉</h1>
+        <div class="timeline-tag gold-tag"><i class="fa-solid fa-cake-candles"></i> 1 October 2026 | The Big Day!</div>
+
+        <!-- Birthday Hero: Ahsaan Funny Photo Gallery (4 pics in 2x2 grid) -->
+        <div class="birthday-photo-gallery">
+          <div class="bday-photo-card" onclick="openLightbox(this)" title="Click to view full photo">
+            <div class="bday-photo-frame">
+              <img src="images/ahsaan_birthday.jpg" alt="Ahsaan College Time">
+            </div>
+            <div class="bday-photo-caption">
+              <span class="caption-emoji">😎</span>
+              <p>"College ke din... jab haazri lagwanay ki jagah selfie lagwata tha!" 📚🤳</p>
+            </div>
+          </div>
+          <div class="bday-photo-card" onclick="openLightbox(this)" title="Click to view full photo">
+            <div class="bday-photo-frame">
+              <img src="images/ahsaan_hero_2.jpg" alt="Ahsaan Sharp Look">
+            </div>
+            <div class="bday-photo-caption">
+              <span class="caption-emoji">🔥</span>
+              <p>"Model banna chahta tha, bana kya? Dost ka bewafa! 💼😂"</p>
+            </div>
+          </div>
+          <div class="bday-photo-card" onclick="openLightbox(this)" title="Click to view full photo">
+            <div class="bday-photo-frame">
+              <img src="images/ahsaan_hero_3.jpg" alt="Ahsaan Thinking Pose">
+            </div>
+            <div class="bday-photo-caption">
+              <span class="caption-emoji">🤔</span>
+              <p>"Soch raha hai treat du ya bhaag jaun... Bhai bhagna mat, deni hai! 🍕💸"</p>
+            </div>
+          </div>
+          <div class="bday-photo-card" onclick="openLightbox(this)" title="Click to view full photo">
+            <div class="bday-photo-frame">
+              <img src="images/ahsaan_hero_4.jpg" alt="Ahsaan Blue Kurta">
+            </div>
+            <div class="bday-photo-caption">
+              <span class="caption-emoji">👑</span>
+              <p>"Kurta pehen ke maulana ban raha hai, treat ka sawaal sun ke bhag jaata hai! 😤😂"</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="birthday-card-message">
+          <div class="bday-shayari">
+            "Har saal aaye teri zindagi mein ye din hazar baar,<br>
+            Kamyabiyan choomein qadam, mile be-panah pyar!<br>
+            2010 ki masjid se shuru hui thi ye dosti hamari,<br>
+            Ta-umr salamat rahe ye bhaiyon jaisi yaari!" ❤️🎂
+          </div>
+
+          <p class="birthday-wishes-para">
+            Meri taraf se tujhe zindagi ki har khushi, lambi umar, sehat aur dher saari kamyabi mubarak ho.
+            Tu sirf dost nahi, mera sacha bhai hai!
+          </p>
+          <div class="from-tag">— Tera Bhai, <strong>Ali Haider</strong> 🤝</div>
+        </div>
+
+        <!-- THE ULTIMATE BIRTHDAY TREAT QUESTION BOX -->
+        <div class="treat-challenge-box" id="treatBox">
+          <div class="treat-badge"><i class="fa-solid fa-utensils"></i> THE MILLION DOLLAR QUESTION</div>
+          <h3 class="treat-title">Ab Batao Ahsaan Bhai, Birthday Treat Daini Ha Ya Nahi? 🍕🍔🍗</h3>
+          <p class="treat-sub">Soch samajh ke faisla karna... 'Nahi' ka option waise bhi kaam nahi karega! 😂</p>
+
+          <div class="btn-group treat-buttons">
+            <button class="btn btn-treat-yes" onclick="celebrateTreat()">
+              <i class="fa-solid fa-pizza-slice"></i> HAAN BHAI, FULL TREAT CONFIRM HAI! 😋🎉
+            </button>
+            <button class="btn btn-treat-no runaway-btn" id="treatNoBtn">
+              <i class="fa-solid fa-ban"></i> Nahi Daini! 🏃‍♂️💨
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: RESTAURANT SELECTION (OKARA FAMOUS SPOTS) -->
+        <div class="okara-treat-flow" id="okaraSelectionBox">
+          <div class="treat-step-header">
+            <span class="step-pill">Stage 1 of 2: Location Final karo</span>
+            <h3 class="flow-title">Shabaash! Ab Batao Okara Mein Kahan Khila Rahay Ho? 🍽️🔥</h3>
+            <p class="flow-subtitle">Option select karo warna bill double kar diya jayega! 😂</p>
+          </div>
+
+          <div class="restaurants-grid">
+            <!-- Restaurant 1 -->
+            <div class="restaurant-card" onclick="selectRestaurant('BFC (Best Food / Fried Chicken) Okara', 'Crispy Burger, Broast & Loaded Fries 🍗🍟')">
+              <div class="rest-badge">Crispy & Fast Food</div>
+              <div class="rest-icon">🍔</div>
+              <h4 class="rest-name">BFC Okara</h4>
+              <p class="rest-desc">Crunchy Zinger, Juicy Broast & Loaded Fries</p>
+              <div class="rest-vibe">"Jahan ka fry sab se heavy ho!"</div>
+            </div>
+
+            <!-- Restaurant 2 -->
+            <div class="restaurant-card" onclick="selectRestaurant('Al-Baik / OPTP style Fast Food', 'Burgers, Wings & Cheesy Pizza 🍕')">
+              <div class="rest-badge">Hot & Cheesy</div>
+              <div class="rest-icon">🍕</div>
+              <h4 class="rest-name">Pizza & Fast Food Hub</h4>
+              <p class="rest-desc">Extra Cheese Pizza & Peri Peri Wings</p>
+              <div class="rest-vibe">"Pet bhar kar cheese khani hai!"</div>
+            </div>
+
+            <!-- Restaurant 3 -->
+            <div class="restaurant-card" onclick="selectRestaurant('Desi Karahi & BBQ Spot (GT Road / Benazir Road)', 'Mutton Karahi, Malai Boti & Naan 🍖🔥')">
+              <div class="rest-badge">Shahi Desi Treat</div>
+              <div class="rest-icon">🍲</div>
+              <h4 class="rest-name">Desi Shinwari & BBQ</h4>
+              <p class="rest-desc">Dumba/Chicken Karahi & Makhan Naan</p>
+              <div class="rest-vibe">"Asli bhaiyon wali desi party!"</div>
+            </div>
+
+            <!-- Restaurant 4 -->
+            <div class="restaurant-card" onclick="selectRestaurant('Okara Gymkhana / Fine Dine', 'Executive Buffet & Continental Special ☕🥩')">
+              <div class="rest-badge">VIP Protocol</div>
+              <div class="rest-icon">👑</div>
+              <h4 class="rest-name">Executive / Fine Dine VIP</h4>
+              <p class="rest-desc">Full AC Hall, Royal Ambience & Dessert</p>
+              <div class="rest-vibe">"Ahsaan bhai ka VIP rutba!"</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: RESERVATION DETAILS & FUNNY BOOKING FORM -->
+        <div class="reservation-box" id="reservationBox">
+          <div class="treat-step-header">
+            <span class="step-pill green-pill">Stage 2 of 2: Table Book Ho Rahi Hai</span>
+            <h3 class="flow-title">Table Booking & Protocol Slip 📋✨</h3>
+            <p class="flow-subtitle">Chuninda Restaurant: <strong id="selectedRestDisplay" class="chosen-rest-name">BFC Okara</strong></p>
+          </div>
+
+          <div class="booking-form-grid">
+            <div class="form-group">
+              <label><i class="fa-solid fa-clock"></i> Treat Ka Time (Kis Waqt Pohanchna Hai?)</label>
+              <select id="treatTime" class="custom-select">
+                <option value="Dupahar 2:00 Baje (Lunch Special)">Dupahar 2:00 Baje (Full Lunch Special 🍛)</option>
+                <option value="Sham 7:00 Baje (Sunset BBQ & Chai)">Sham 7:00 Baje (Sunset BBQ & Chai ☕)</option>
+                <option value="Raat 9:30 Baje (Late Night Kaand & Feast)" selected>Raat 9:30 Baje (Late Night Feast 🌙)</option>
+                <option value="Jab Ahsaan Bhai Ki Jaib Ijazat Day 😂">Jab Ahsaan Bhai Ki Jaib Ijazat Day 😂</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label><i class="fa-solid fa-users"></i> Table Par Kaun Kaun Hoga?</label>
+              <select id="treatGuests" class="custom-select">
+                <option value="Sirf Ali Haider Aur Birthday Boy Ahsaan (Bhai Bhai VIP Table)" selected>Sirf Ali Haider + Ahsaan (Bhai Bhai Table 🤝)</option>
+                <option value="Puri Bakchodi Gang (Sab Dost)">Puri Bakchodi Gang (Sab Doston Ka Kafla 🚜)</option>
+                <option value="Jitne Zyada Utna Ahsaan Ka Nuqsaan 😂">Jitne Zyada Utna Ahsaan Ka Nuqsaan 😂</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label><i class="fa-solid fa-wallet"></i> Bill Ka Payment Method (Sponsor Confirmation)</label>
+              <div class="sponsor-badge-display">
+                <i class="fa-solid fa-shield-halved"></i> 100% Guaranteed Sponsored by: <strong>Ahsaan Bhai (No Bahana Allowed!)</strong> 💳🔥
+              </div>
+            </div>
+          </div>
+
+          <div class="reservation-action-btn">
+            <button class="btn btn-confirm-booking" onclick="confirmReservation()">
+              <i class="fa-solid fa-clipboard-check"></i> CONFIRM RESERVATION & GENERATE SLIP 🧾🎉
+            </button>
+          </div>
+        </div>
+
+        <!-- FINAL STEP: OFFICIAL FUNNY RESERVATION SLIP / RECEIPT -->
+        <div class="official-receipt-card" id="officialReceipt">
+          <div class="receipt-stamp">CONFIRMED & LOCKED 🔒</div>
+          <div class="receipt-header">
+            <div class="receipt-logo">🎂 OKARA FOOD PROTOCOL 🎂</div>
+            <p class="receipt-id">Booking ID: #AHSAAN-BDAY-2026</p>
+          </div>
+
+          <div class="receipt-details">
+            <div class="receipt-row">
+              <span class="label">Host & Sponsor:</span>
+              <span class="val highlight-sponsor">Ahsaan Bhai (Birthday Boy 👑)</span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Chief Guest:</span>
+              <span class="val">Ali Haider (Apna Bhai ❤️)</span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Selected Venue (Okara):</span>
+              <span class="val venue-val" id="receiptVenue">BFC Okara</span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Menu Category:</span>
+              <span class="val" id="receiptMenu">Crispy Chicken & Loaded Fries</span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Timing:</span>
+              <span class="val" id="receiptTiming">Raat 9:30 Baje</span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Bill Status:</span>
+              <span class="val bill-val">Ahsaan Ki Jaib Pe Bhari Padne Wala Hai 😂💸</span>
+            </div>
+          </div>
+
+          <div class="receipt-footer-funny">
+            <p>⚠️ <strong>Warning:</strong> Is booking ko cancel karne par 500% fine lagega aur ghar se utha liya jayega! 😂</p>
+          </div>
+
+          <div class="receipt-buttons">
+            <a id="whatsappShareBtn" href="#" target="_blank" class="btn btn-whatsapp">
+              <i class="fa-brands fa-whatsapp"></i> Slip WhatsApp Par Bhejo Ali Ko! 📲
+            </a>
+            <button class="btn btn-yes" onclick="fireMoreConfetti()">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Phir Se Blast Karo! 🎊
+            </button>
+          </div>
+        </div>
+
+        <div class="restart-wrapper">
+          <button class="btn-restart" onclick="goToSlide(0)"><i class="fa-solid fa-rotate-left"></i> Phir Se Yaadein
+            Dekho</button>
+        </div>
+      </section>
+
+    </div><!-- /cards-wrapper -->
+  </div><!-- /container -->
+
+  <!-- Runaway prank sound (optional synth chime) -->
+  <audio id="confettiSound" preload="auto"
+    src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"></audio>
+  <!-- Lightbox Modal for Full Photo Zoom -->
+  <div class="photo-lightbox-modal" id="photoLightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content-box">
+      <button class="lightbox-close-btn" onclick="closeLightbox(event)">&times;</button>
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Full Photo Preview">
+      <p id="lightboxCaption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script src="birthday.js"></script>
+</body>
+
+</html>

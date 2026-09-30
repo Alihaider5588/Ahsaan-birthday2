@@ -1,0 +1,1515 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #ff4b72 0%, #ff8f3d 100%);
+  --secondary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  --bg-dark: #0b0f19;
+  --card-bg: rgba(22, 28, 45, 0.85);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-pink: #ec4899;
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 10px 40px;
+}
+
+/* Background animated glow orbs */
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  animation: floatOrb 12s infinite alternate ease-in-out;
+}
+
+.glow-1 {
+  width: 350px;
+  height: 350px;
+  background: #f43f5e;
+  top: -50px;
+  left: -50px;
+}
+
+.glow-2 {
+  width: 400px;
+  height: 400px;
+  background: #6366f1;
+  bottom: -50px;
+  right: -50px;
+  animation-duration: 15s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.15); }
+  100% { transform: translate(-30px, 80px) scale(0.95); }
+}
+
+/* Floating particle emojis */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  font-size: 1.3rem;
+  opacity: 0.6;
+  user-select: none;
+  animation: riseUp linear infinite;
+}
+
+@keyframes riseUp {
+  0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* Music floating button */
+.music-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+/* Main Container */
+.container {
+  width: 100%;
+  max-width: 820px;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+/* Timeline Pill Bar */
+.timeline-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  margin-bottom: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.timeline-indicator::-webkit-scrollbar {
+  display: none;
+}
+
+.indicator-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.indicator-step i {
+  font-size: 0.85rem;
+}
+
+.indicator-step.active {
+  background: var(--primary-gradient);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255, 75, 114, 0.4);
+}
+
+.indicator-step.passed {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Cards Wrapper */
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Card Slide */
+.card-slide {
+  display: none;
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 24px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  animation: slideFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.card-slide.active {
+  display: block;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card Top Bar with Counter */
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.slide-counter {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.gold-counter {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+/* Badges & Headers */
+.card-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ff9fb4;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+
+.pulse-badge {
+  background: var(--primary-gradient);
+  color: #fff;
+  animation: pulseBadge 1.5s infinite;
+}
+
+@keyframes pulseBadge {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 75, 114, 0.6); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(255, 75, 114, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 75, 114, 0); }
+}
+
+.slide-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.gold-tag {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+/* Photo Placeholder & Full Frame Display (Auto-Adjusted to Image Aspect Ratio) */
+.photo-placeholder {
+  position: relative;
+  width: 100%;
+  max-height: 480px;
+  height: auto;
+  min-height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 20px;
+  background: rgba(11, 15, 25, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.photo-placeholder img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+.photo-placeholder:hover img {
+  transform: scale(1.015);
+}
+
+/* Two photos side-by-side (Slide 4 Galti Tab) */
+.photo-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.photo-grid-two .photo-placeholder {
+  max-height: 380px;
+  height: auto;
+  margin-bottom: 0;
+}
+
+.photo-grid-two .photo-placeholder img {
+  max-height: 380px;
+  width: 100%;
+  height: auto;
+}
+
+/* Funny Missing Photo Notice Box */
+.funny-missing-photo-box {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(99, 102, 241, 0.12));
+  border: 2px dashed rgba(249, 115, 22, 0.4);
+  border-radius: 18px;
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: slideFadeIn 0.4s ease forwards;
+}
+
+.funny-icon {
+  font-size: 2.6rem;
+  margin-bottom: 8px;
+}
+
+.funny-missing-photo-box h4 {
+  font-size: 1.18rem;
+  color: #fbbf24;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.funny-missing-photo-box p {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.funny-pill {
+  display: inline-block;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Birthday Photo Gallery (4 Funny Cards in 2x2 Grid) */
+.birthday-photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.bday-photo-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.12);
+}
+
+.bday-photo-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #fbbf24;
+  box-shadow: 0 12px 35px rgba(251, 191, 36, 0.35);
+}
+
+.bday-photo-frame {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #0b0f19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bday-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+.bday-photo-card:hover .bday-photo-frame img {
+  transform: scale(1.06);
+}
+
+.bday-photo-caption {
+  padding: 10px 12px;
+  text-align: center;
+  background: rgba(251, 191, 36, 0.06);
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
+}
+
+.caption-emoji {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.bday-photo-caption p {
+  font-size: 0.78rem;
+  color: #fde68a;
+  line-height: 1.45;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Story Content Text */
+.story-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.story-content p {
+  margin-bottom: 12px;
+}
+
+.highlight-text {
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  padding: 10px 14px;
+  border-left: 4px solid #38bdf8;
+  border-radius: 4px 10px 10px 4px;
+}
+
+.highlight-golden {
+  font-weight: 600;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  padding: 10px 14px;
+  border-left: 4px solid #fbbf24;
+  border-radius: 4px 10px 10px 4px;
+}
+
+.quote-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-style: italic;
+  color: #fed7aa;
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+/* FINAL TOUCH BOX FOR EVERY SECTION */
+.final-touch-box {
+  margin: 14px 0 6px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(234, 88, 12, 0.08));
+  border: 1.5px dashed rgba(245, 158, 11, 0.45);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #fef08a;
+  line-height: 1.45;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.08);
+}
+
+.final-touch-badge {
+  background: #f59e0b;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 4px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.final-touch-box p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Question Box & Buttons */
+.question-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 18px 20px;
+  position: relative;
+}
+
+.question-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  min-height: 56px;
+}
+
+/* Generic Buttons */
+.btn {
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-yes {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 18px rgba(255, 75, 114, 0.4);
+}
+
+.btn-yes:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(255, 75, 114, 0.6);
+}
+
+/* THE FAMOUS RUNAWAY NO BUTTON */
+.runaway-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+.runaway-btn.escaped {
+  position: fixed !important;
+  transition: top 0.15s ease-out, left 0.15s ease-out, transform 0.15s ease !important;
+  box-shadow: 0 10px 25px rgba(255, 75, 114, 0.5) !important;
+  background: #f43f5e !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* SLIDE 8: BIRTHDAY SPECIAL STYLES */
+.grand-birthday-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(135deg, #ffd700, #ff8b00, #ff007f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  from { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
+  to { filter: drop-shadow(0 0 18px rgba(255, 0, 127, 0.6)); }
+}
+
+/* 4 Photo 2x2 Birthday Gallery */
+.birthday-photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 18px 0 24px;
+}
+
+.bday-photo-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.bday-photo-card:hover {
+  transform: translateY(-4px);
+  border-color: #ffd700;
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.35);
+}
+
+.bday-photo-frame {
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  background: #090d16;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bday-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.bday-photo-card:hover .bday-photo-frame img {
+  transform: scale(1.05);
+}
+
+/* Face-Centered Positioning so Ahsaan's face is 100% visible */
+.bday-photo-card:nth-child(1) .bday-photo-frame img {
+  object-position: center 18%;
+}
+
+.bday-photo-card:nth-child(2) .bday-photo-frame img {
+  object-position: center 8%;
+}
+
+.bday-photo-card:nth-child(3) .bday-photo-frame img {
+  object-position: center 26%;
+}
+
+.bday-photo-card:nth-child(4) .bday-photo-frame img {
+  object-position: center 10%;
+}
+
+.bday-photo-caption {
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.92);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bday-photo-caption .caption-emoji {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.bday-photo-caption p {
+  font-size: 0.82rem;
+  color: #fde68a;
+  line-height: 1.35;
+  margin: 0;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.birthday-card-message {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.bday-shayari {
+  font-family: 'Poppins', 'Noto Nastaliq Urdu', serif;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #fef08a;
+  background: rgba(254, 240, 138, 0.08);
+  border: 1px dashed rgba(254, 240, 138, 0.3);
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.birthday-wishes-para {
+  font-size: 1.05rem;
+  color: #e2e8f0;
+  line-height: 1.7;
+}
+
+.from-tag {
+  margin-top: 14px;
+  font-size: 1.1rem;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Treat Box */
+.treat-challenge-box {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.15), rgba(219, 39, 119, 0.15));
+  border: 2px solid rgba(249, 115, 22, 0.4);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(234, 88, 12, 0.2);
+}
+
+.treat-badge {
+  display: inline-block;
+  background: #f97316;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.treat-title {
+  font-size: 1.35rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.treat-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.treat-buttons {
+  min-height: 60px;
+}
+
+.btn-treat-yes {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-treat-yes:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6);
+}
+
+.btn-treat-no {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+/* =========================================================================
+   OKARA RESTAURANT TREAT FLOW & RESERVATION STYLES
+   ========================================================================= */
+
+.okara-treat-flow {
+  display: none;
+  background: rgba(15, 23, 42, 0.95);
+  border: 2px solid rgba(249, 115, 22, 0.4);
+  border-radius: 22px;
+  padding: 24px;
+  margin-top: 22px;
+  animation: slideFadeIn 0.45s ease forwards;
+  box-shadow: 0 15px 40px rgba(249, 115, 22, 0.15);
+}
+
+.okara-treat-flow.active {
+  display: block;
+}
+
+.treat-step-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.step-pill {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.2);
+  border: 1px solid #f97316;
+  color: #ff9a4b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.green-pill {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.flow-title {
+  font-size: 1.35rem;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.flow-subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.chosen-rest-name {
+  color: #fbbf24;
+}
+
+/* Restaurants Grid */
+.restaurants-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.restaurant-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restaurant-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #f97316;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.25);
+}
+
+.restaurant-card.selected {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: #f97316;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+.rest-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.rest-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.rest-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.rest-desc {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.rest-vibe {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #f97316;
+  margin-top: auto;
+}
+
+/* Reservation Box Form */
+.reservation-box {
+  display: none;
+  background: rgba(15, 23, 42, 0.95);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  border-radius: 22px;
+  padding: 24px;
+  margin-top: 20px;
+  animation: slideFadeIn 0.45s ease forwards;
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+}
+
+.reservation-box.active {
+  display: block;
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-select {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.custom-select:focus {
+  border-color: #10b981;
+}
+
+.custom-select option {
+  background: #0f172a;
+  color: #fff;
+}
+
+.sponsor-badge-display {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px dashed rgba(239, 68, 68, 0.5);
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: #fca5a5;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sponsor-badge-display strong {
+  color: #f87171;
+}
+
+.reservation-action-btn {
+  text-align: center;
+}
+
+.btn-confirm-booking {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-confirm-booking:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.6);
+}
+
+/* Official Receipt Card */
+.official-receipt-card {
+  display: none;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 20px;
+  padding: 26px 22px;
+  margin-top: 24px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.official-receipt-card.active {
+  display: block;
+}
+
+.receipt-stamp {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 2px dashed #dc2626;
+  color: #dc2626;
+  font-weight: 900;
+  font-size: 0.72rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transform: rotate(-10deg);
+  letter-spacing: 0.5px;
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 2px dashed #cbd5e1;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.receipt-logo {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: 1px;
+}
+
+.receipt-id {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.receipt-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 4px 0;
+  border-bottom: 1px dotted #e2e8f0;
+}
+
+.receipt-row .label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.receipt-row .val {
+  font-weight: 700;
+  color: #0f172a;
+  text-align: right;
+  max-width: 60%;
+}
+
+.receipt-row .highlight-sponsor {
+  color: #ea580c;
+}
+
+.receipt-row .venue-val {
+  color: #0284c7;
+}
+
+.receipt-row .bill-val {
+  color: #dc2626;
+}
+
+.receipt-footer-funny {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.receipt-footer-funny p {
+  font-size: 0.82rem;
+  color: #991b1b;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.receipt-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  background: #1eb956;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+}
+
+.restart-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-restart {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-restart:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* RESPONSIVE DESIGN & LAPTOP SCREEN FIX */
+@media (max-height: 820px) and (min-width: 601px) {
+  /* Smaller laptop screens like 1366x768 or 14-inch laptops */
+  body {
+    padding: 12px 10px 25px;
+  }
+
+  .timeline-indicator {
+    padding: 6px 10px;
+    margin-bottom: 14px;
+  }
+
+  .indicator-step {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
+  .card-slide {
+    padding: 18px 22px;
+    border-radius: 20px;
+  }
+
+  .slide-title {
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+  }
+
+  .timeline-tag {
+    margin-bottom: 14px;
+    padding: 3px 10px;
+    font-size: 0.8rem;
+  }
+
+  .photo-placeholder {
+    max-height: 280px;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .photo-grid-two .photo-placeholder {
+    max-height: 240px;
+    height: auto;
+  }
+
+  .birthday-photo-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .bday-photo-frame {
+    height: 180px;
+  }
+
+  .bday-photo-caption p {
+    font-size: 0.72rem;
+  }
+
+  .story-content {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .story-content p {
+    margin-bottom: 8px;
+  }
+
+  .quote-box {
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 0.9rem;
+  }
+
+  .highlight-text, .highlight-golden {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .question-box {
+    padding: 14px 16px;
+  }
+
+  .question-title {
+    font-size: 0.92rem;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px 8px 25px;
+  }
+
+  .timeline-indicator {
+    padding: 6px 8px;
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+
+  .indicator-step {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .card-slide {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+
+  .slide-title {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .timeline-tag {
+    font-size: 0.76rem;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }
+
+  .grand-birthday-title {
+    font-size: 1.45rem;
+  }
+
+  .photo-placeholder {
+    height: 240px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+  }
+
+  .photo-grid-two {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .photo-grid-two .photo-placeholder {
+    height: 220px;
+  }
+
+  .birthday-photo-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 14px 0 18px;
+  }
+
+  .bday-photo-frame {
+    height: 180px;
+  }
+
+  .bday-photo-card {
+    border-radius: 12px;
+  }
+
+  .bday-photo-caption {
+    padding: 6px 8px;
+    gap: 5px;
+  }
+
+  .bday-photo-caption .caption-emoji {
+    font-size: 1rem;
+  }
+
+  .bday-photo-caption p {
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  .story-content {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+
+  .story-content p {
+    margin-bottom: 8px;
+  }
+
+  .quote-box {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    margin: 8px 0;
+  }
+
+  .highlight-text, .highlight-golden {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .question-box {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .question-title {
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+  }
+
+  .bday-shayari {
+    font-size: 0.88rem;
+    padding: 12px;
+    line-height: 1.6;
+  }
+
+  .btn {
+    padding: 9px 16px;
+    font-size: 0.82rem;
+  }
+
+  .btn-treat-yes {
+    font-size: 0.88rem;
+    padding: 12px 16px;
+  }
+
+  .treat-title {
+    font-size: 1.1rem;
+  }
+
+  .restaurants-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .restaurant-card {
+    padding: 12px 10px;
+  }
+
+  .rest-icon {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+  }
+
+  .booking-form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .official-receipt-card {
+    padding: 18px 14px;
+  }
+
+  .receipt-row {
+    font-size: 0.82rem;
+  }
+
+  .btn-whatsapp {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+}
+
+/* Photo Lightbox Preview Modal */
+.photo-lightbox-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 100000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.25s ease;
+}
+
+.photo-lightbox-modal.active {
+  display: flex;
+}
+
+.lightbox-content-box {
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.lightbox-caption {
+  margin-top: 14px;
+  color: #fde68a;
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: center;
+  max-width: 520px;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close-btn:hover {
+  background: #f43f5e;
+}
+
